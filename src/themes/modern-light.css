@@ -1,0 +1,92 @@
+[data-theme='modern-light'] {
+    --ui-canvas: #f6f7f9;
+    --ui-panel: #ffffff;
+    --ui-panel-2: #f1f3f5;
+    --ui-header: #ffffff;
+    --ui-input: #ffffff;
+
+    --ui-text: #111827;
+    --ui-muted: #64748b;
+    --ui-accent: #111827;
+    --ui-accent-2: #2563eb;
+    --ui-accent-text: #ffffff;
+
+    --ui-border: #d9dee7;
+    --ui-border-strong: #c3cad6;
+    --ui-hover: #eef1f5;
+    --ui-selected: color-mix(in srgb, var(--ui-accent-2) 10%, transparent);
+    --ui-grid: color-mix(in srgb, var(--ui-border) 46%, transparent);
+
+    --market-buy: #1f883d;
+    --market-sell: #cf222e;
+    --market-up: #1a7f37;
+    --market-down: #cf222e;
+
+    --ui-font-family-base: Inter, system-ui, sans-serif;
+    --ui-font-family-mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --ui-font-size-xs: 11px;
+    --ui-font-size-sm: 12px;
+    --ui-font-size-md: 13px;
+    --ui-line-height: 1.3;
+    --ui-font-weight-normal: 400;
+    --ui-font-weight-bold: 600;
+    --ui-radius: 8px;
+
+    --shell-topbar-height: 34px;
+    --shell-statusbar-height: 24px;
+    --shell-edge-padding: 10px;
+    --shell-gap: 10px;
+    --shell-cluster-gap: 2px;
+    --shell-bar-border: var(--ui-border);
+    --brand-letter-spacing: 0.12em;
+
+    --chrome-control-height: 24px;
+    --chrome-radius: 6px;
+    --chrome-icon-size: 24px;
+    --chrome-chevron-size: 13px;
+
+    --tab-gap: 2px;
+    --tab-padding-x: 10px;
+    --tab-active-height: 2px;
+    --tab-active-inset: 6px;
+
+    --theme-switch-gap: 2px;
+    --theme-switch-padding: 2px;
+    --theme-switch-border: color-mix(in srgb, var(--ui-border) 68%, transparent);
+
+    --command-padding-x: 12px;
+    --command-background: color-mix(in srgb, var(--ui-panel) 82%, var(--ui-canvas));
+    --command-border: color-mix(in srgb, var(--ui-border) 72%, transparent);
+
+    --status-group-gap: 2px;
+    --status-item-height: 20px;
+    --status-item-gap: 5px;
+    --status-item-padding-x: 6px;
+    --status-icon-size: 14px;
+
+    --layout-gap: 1px;
+    --panel-radius: 10px;
+    --panel-border-color: color-mix(in srgb, var(--ui-border) 76%, transparent);
+    --panel-header-background: color-mix(in srgb, var(--ui-panel-2) 86%, var(--ui-panel));
+    --panel-header-border-color: color-mix(in srgb, var(--ui-border) 62%, transparent);
+    --panel-header-text: color-mix(in srgb, var(--ui-text) 72%, var(--ui-muted));
+    --panel-header-height: 28px;
+    --panel-header-padding-x: 12px;
+    --panel-body-padding: 12px;
+
+    --table-grid-color: color-mix(in srgb, var(--ui-grid) 76%, transparent);
+    --table-cell-padding-y: 6px;
+    --table-cell-padding-x: 10px;
+
+    --chart-row-height: 36px;
+    --chart-column-width: 56px;
+    --chart-stack-gap: 6px;
+    --chart-price-font-size: 30px;
+
+    --stack-gap: 10px;
+    --input-height: 30px;
+    --input-padding-x: 10px;
+    --input-border-color: color-mix(in srgb, var(--ui-border) 74%, transparent);
+    --input-radius: 8px;
+    --action-button-height: 32px;
+}
