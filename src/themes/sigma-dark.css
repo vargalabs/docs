@@ -1,0 +1,92 @@
+[data-theme='sigma-dark'] {
+    --ui-canvas: #050505;
+    --ui-panel: #0b0a08;
+    --ui-panel-2: #110d08;
+    --ui-header: #090704;
+    --ui-input: #090805;
+
+    --ui-text: #f1e0b7;
+    --ui-muted: #b69763;
+    --ui-accent: #f2a100;
+    --ui-accent-2: #ffc14a;
+    --ui-accent-text: #050505;
+
+    --ui-border: #5c3600;
+    --ui-border-strong: #a96500;
+    --ui-hover: #1a1308;
+    --ui-selected: color-mix(in srgb, var(--ui-accent) 20%, transparent);
+    --ui-grid: color-mix(in srgb, var(--ui-border) 78%, transparent);
+
+    --market-buy: #00d26a;
+    --market-sell: #ff4d3d;
+    --market-up: #00d26a;
+    --market-down: #ff4d3d;
+
+    --ui-font-family-base: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+    --ui-font-family-mono: 'IBM Plex Mono', 'Consolas', monospace;
+    --ui-font-size-xs: 10px;
+    --ui-font-size-sm: 12px;
+    --ui-font-size-md: 13px;
+    --ui-line-height: 1.15;
+    --ui-font-weight-normal: 500;
+    --ui-font-weight-bold: 600;
+    --ui-radius: 0px;
+
+    --shell-topbar-height: 32px;
+    --shell-statusbar-height: 22px;
+    --shell-edge-padding: 8px;
+    --shell-gap: 8px;
+    --shell-cluster-gap: 2px;
+    --shell-bar-border: var(--ui-border-strong);
+    --brand-letter-spacing: 0.18em;
+
+    --chrome-control-height: 22px;
+    --chrome-radius: 3px;
+    --chrome-icon-size: 20px;
+    --chrome-chevron-size: 13px;
+
+    --tab-gap: 1px;
+    --tab-padding-x: 8px;
+    --tab-active-height: 2px;
+    --tab-active-inset: 4px;
+
+    --theme-switch-gap: 1px;
+    --theme-switch-padding: 1px;
+    --theme-switch-border: var(--ui-border);
+
+    --command-padding-x: 10px;
+    --command-background: var(--ui-panel-2);
+    --command-border: var(--ui-border);
+
+    --status-group-gap: 2px;
+    --status-item-height: 18px;
+    --status-item-gap: 5px;
+    --status-item-padding-x: 6px;
+    --status-icon-size: 14px;
+
+    --layout-gap: 8px;
+    --panel-radius: 0px;
+    --panel-border-color: var(--ui-border-strong);
+    --panel-header-background: var(--ui-panel-2);
+    --panel-header-border-color: var(--ui-border-strong);
+    --panel-header-text: var(--ui-muted);
+    --panel-header-height: 24px;
+    --panel-header-padding-x: 8px;
+    --panel-body-padding: 8px;
+
+    --table-grid-color: var(--ui-grid);
+    --table-cell-padding-y: 4px;
+    --table-cell-padding-x: 8px;
+
+    --chart-row-height: 28px;
+    --chart-column-width: 40px;
+    --chart-stack-gap: 4px;
+    --chart-price-font-size: 26px;
+
+    --stack-gap: 8px;
+    --input-height: 26px;
+    --input-padding-x: 8px;
+    --input-border-color: var(--ui-border-strong);
+    --input-radius: 0px;
+    --action-button-height: 28px;
+}
