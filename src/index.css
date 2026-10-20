@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+html,
+body,
+#root {
+    margin: 0;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    background: var(--ui-canvas);
+    color: var(--ui-text);
+    font-family: var(--ui-font-family-base);
+    font-size: var(--ui-font-size-sm);
+    line-height: var(--ui-line-height);
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* brand logos: the light badge for light themes, the dark badge for dark */
+.ui-brand-logo {
+    display: block;
+    border-radius: 4px;
+}
+
+.sigma-logo-dark {
+    display: none;
+}
+
+[data-theme='sigma-dark'] .sigma-logo-light,
+[data-theme='modern-dark'] .sigma-logo-light {
+    display: none;
+}
+
+[data-theme='sigma-dark'] .sigma-logo-dark,
+[data-theme='modern-dark'] .sigma-logo-dark {
+    display: block;
+}
