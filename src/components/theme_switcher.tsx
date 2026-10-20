@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Moon, Sun } from 'lucide-react'
 import { make_theme, set_theme, type theme_family_t, type theme_mode_t } from '../lib/theme'
+import { read_stored_theme, write_stored_theme } from '../lib/theme_store'
 
 const theme_style_options = [
     { value: 'modern', label: 'Modern' },
@@ -9,7 +10,6 @@ const theme_style_options = [
 
 const appearance_mode_options = ['light', 'dark'] as const
 
-const theme_storage_key = 'sigma.ui.theme'
 const theme_style_storage_key = 'sigma.ui.theme_style'
 const appearance_mode_storage_key = 'sigma.ui.appearance_mode'
 
@@ -35,26 +35,26 @@ function parse_stored_theme(value: string | null): { theme_style: theme_family_t
 
 export function ThemeSwitcher() {
     const [theme_style, set_theme_style] = useState<theme_family_t>(() => {
+        const shared = parse_stored_theme(read_stored_theme())
+        if (shared)
+            return shared.theme_style
+
         const stored_theme_style = window.localStorage.getItem(theme_style_storage_key)
-
-        if (is_theme_style(stored_theme_style))
-            return stored_theme_style
-
-        return parse_stored_theme(window.localStorage.getItem(theme_storage_key))?.theme_style ?? 'modern'
+        return is_theme_style(stored_theme_style) ? stored_theme_style : 'modern'
     })
     const [appearance_mode, set_appearance_mode] = useState<theme_mode_t>(() => {
+        const shared = parse_stored_theme(read_stored_theme())
+        if (shared)
+            return shared.appearance_mode
+
         const stored_appearance_mode = window.localStorage.getItem(appearance_mode_storage_key)
-
-        if (is_appearance_mode(stored_appearance_mode))
-            return stored_appearance_mode
-
-        return parse_stored_theme(window.localStorage.getItem(theme_storage_key))?.appearance_mode ?? 'light'
+        return is_appearance_mode(stored_appearance_mode) ? stored_appearance_mode : 'light'
     })
 
     useEffect(() => {
         const theme = make_theme(theme_style, appearance_mode)
         set_theme(theme)
-        window.localStorage.setItem(theme_storage_key, theme)
+        write_stored_theme(theme)
         window.localStorage.setItem(theme_style_storage_key, theme_style)
         window.localStorage.setItem(appearance_mode_storage_key, appearance_mode)
     }, [theme_style, appearance_mode])
