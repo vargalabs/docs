@@ -27,10 +27,22 @@
 .docs-home-section, .docs-solution-band, .docs-roadmap-band { scroll-margin-top: 8rem; }
 .docs-home-hero { position: relative; border-bottom: 1px solid var(--color-border); background: radial-gradient(circle at 73% 34%, color-mix(in srgb, var(--color-accent) 18%, transparent), transparent 28rem); }
 .docs-home-hero::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(color-mix(in srgb, var(--color-border) 45%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--color-border) 45%, transparent) 1px, transparent 1px); background-size: 3rem 3rem; mask-image: linear-gradient(to bottom, black, transparent); pointer-events: none; }
-.docs-home-hero-grid { position: relative; display: grid; align-items: center; gap: clamp(2.5rem, 8vw, 7rem); min-height: min(42rem, calc(100vh - 4rem)); padding-block: clamp(4rem, 9vw, 8rem); }
+.docs-hero-wrapper { position: relative; padding-block: clamp(2rem, 5vw, 4rem); }
+.docs-hero-lens-bar { display: flex; gap: var(--space-sm); overflow-x: auto; padding-bottom: var(--space-xs); margin-bottom: clamp(1.5rem, 3vw, 2.5rem); scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+.docs-hero-lens-tab { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; flex: 1 1 0; min-width: 10.5rem; padding: var(--space-sm) var(--space-md); border-radius: var(--radius-sm); border: 1px solid var(--color-border); background: color-mix(in srgb, var(--color-surface) 90%, transparent); color: var(--color-text); cursor: pointer; text-align: left; transition: all var(--transition-fast); }
+.docs-hero-lens-tab:hover { border-color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 8%, var(--color-surface)); }
+.docs-hero-lens-tab-active { border-color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 14%, var(--color-surface)); box-shadow: 0 0 0 1px var(--color-accent); }
+.docs-hero-lens-tag { font-family: var(--font-mono); font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); color: var(--color-text-muted); letter-spacing: 0.04em; }
+.docs-hero-lens-tab-active .docs-hero-lens-tag { color: var(--color-accent); }
+.docs-hero-lens-title { font-family: var(--font-base); font-size: var(--font-size-sm); font-weight: var(--font-weight-bold); color: var(--color-text); white-space: nowrap; }
+.docs-home-hero-grid { position: relative; display: grid; align-items: center; gap: clamp(2.5rem, 8vw, 7rem); }
 .docs-home-hero .ui-hero-copy { max-width: 42rem; }
-.docs-home-hero .ui-hero-title { max-width: 13ch; margin: var(--space-lg) 0 0; }
-.docs-home-hero .ui-hero-body { max-width: 38rem; }
+.docs-home-hero .ui-hero-title { max-width: 14ch; margin: var(--space-lg) 0 0; font-size: clamp(2.2rem, 5vw, 3.8rem); }
+.docs-home-hero .ui-hero-body { max-width: 38rem; margin-top: var(--space-md); }
+.docs-hero-question-block { margin-top: var(--space-lg); padding: var(--space-sm) var(--space-md); border-left: 2px solid var(--color-accent); background: color-mix(in srgb, var(--color-accent) 6%, transparent); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.docs-hero-question-label { display: block; font-family: var(--font-mono); font-size: var(--font-size-xs); font-weight: var(--font-weight-bold); color: var(--color-accent); letter-spacing: 0.05em; }
+.docs-hero-question-text { margin: var(--space-xs) 0 0; font-size: var(--font-size-md); font-style: italic; color: var(--color-text); line-height: 1.45; }
+.docs-hero-controls-badge { margin-top: var(--space-lg); max-width: 38rem; padding: var(--space-xs) var(--space-sm); border: 1px solid var(--color-border); background: color-mix(in srgb, var(--color-surface) 80%, transparent); border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 11px; color: var(--color-text-muted); overflow-x: auto; white-space: nowrap; }
 .docs-home-actions { margin-top: var(--space-xl); }
 .docs-family-map { margin: 0; align-self: stretch; display: grid; align-content: center; min-width: 0; }
 .docs-family-map svg { width: 100%; max-width: 38rem; margin-inline: auto; overflow: visible; }

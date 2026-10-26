@@ -18,6 +18,74 @@ type product_t = {
     status: string
 }
 
+type perspective_key_t = 'security' | 'systems' | 'crypto' | 'founder' | 'devops'
+
+type perspective_detail_t = {
+    tag: string
+    title: string
+    eyebrow: string
+    headline: string
+    question_label: string
+    question: string
+    body: string
+    controls_badge: string
+}
+
+const perspective_keys: perspective_key_t[] = ['security', 'systems', 'crypto', 'founder', 'devops']
+
+const perspectives: Record<perspective_key_t, perspective_detail_t> = {
+    security: {
+        tag: '01 // SECURITY',
+        title: 'Blast-Radius Control',
+        eyebrow: 'VARGALABS SYSTEMS',
+        headline: 'AI execution within strict blast-radius controls.',
+        question_label: 'THE CORE QUESTION:',
+        question: '“How do we use frontier models without risking secret leaks or rogue tool execution?”',
+        body: 'Delegate to frontier cloud models or an inference server on your private network. Every outbound payload passes through a fail-closed redaction gate that strips credentials and private keys before leaving the daemon. Workspace tools resolve all paths beneath the project root using descriptor-relative kernel confinement, refusing external symlinks outright. Subprocess execution and destructive repository actions require separate operator grants, while the approval system treats silence as refusal.',
+        controls_badge: 'CONTROLS: FAIL-CLOSED REDACTION · KERNEL PATH CONFINEMENT · SEPARATE OPERATOR GRANTS',
+    },
+    systems: {
+        tag: '02 // SYSTEMS DEV',
+        title: 'Cross-Platform C++',
+        eyebrow: 'CROSS-PLATFORM C++',
+        headline: 'Native C++23. Frontier and local models.',
+        question_label: 'THE CORE QUESTION:',
+        question: '“Is this real software built for actual developer machines, or bloated web wrappers?”',
+        body: 'Engineered in clean C++23 and compiled natively for Linux and macOS, with a statically linked runtime and zero interpreter overhead. Connect directly to Anthropic, OpenAI, Google Gemini, Kimi, Z.ai, and xAI, or run chat inference on private hardware through Ollama. Every file write is staged, flushed, and committed via a single atomic rename, and no edit is accepted without fresh read evidence from the current session.',
+        controls_badge: 'OS: LINUX · MACOS | C++23 NATIVE | ATOMIC WRITES | LOCAL SOCKET',
+    },
+    crypto: {
+        tag: '03 // CRYPTO & MATH',
+        title: 'Deterministic Tapes',
+        eyebrow: 'VERIFIABLE STATE',
+        headline: 'Deterministic audit trails for high-consequence code.',
+        question_label: 'THE CORE QUESTION:',
+        question: '“Can I audit and reproduce state when underlying models are non-deterministic?”',
+        body: 'No unrecorded side effects or volatile in-memory drift. The daemon enforces the durable-before-effect invariant: a tool attempt is committed to the local append-only tape and claimed before an executor may run it. Any attempt that cannot be recorded is refused. System state projections are rebuilt from the tape by replay, and duplicate replay remains strictly idempotent.',
+        controls_badge: 'INVARIANT: DURABLE BEFORE EFFECT · TAPE AS AUTHORITY · IDEMPOTENT REPLAY',
+    },
+    founder: {
+        tag: '04 // FOUNDER & IP',
+        title: 'Data Custody',
+        eyebrow: 'IP GOVERNANCE',
+        headline: 'Frontier AI velocity without trade-secret exposure.',
+        question_label: 'THE CORE QUESTION:',
+        question: '“Will using autonomous AI tools expose our proprietary algorithms to third parties?”',
+        body: 'Bring your own API keys and subscriptions, or point the daemon at an inference server inside your private network. Session tapes remain on your host in local SQLite or Redis storage. Credential-shaped content is scrubbed inside the daemon before any request leaves your machine. What external vendors do with received traffic is governed by your contract with that vendor; VargaLABS gives you the architecture to keep sensitive code strictly on private infrastructure.',
+        controls_badge: 'CUSTODY: LOCAL TAPES · DAEMON-SIDE REDACTION · BYOK OR PRIVATE INFERENCE',
+    },
+    devops: {
+        tag: '05 // DEPLOYMENT',
+        title: 'Server, Team & OS',
+        eyebrow: 'DEPLOYMENT TOPOLOGY',
+        headline: 'From a single workstation to a shared team host.',
+        question_label: 'THE CORE QUESTION:',
+        question: '“How difficult is this to operate across diverse workstations and isolated networks?”',
+        body: 'One daemon serves an individual engineer or a shared group: admitted system UIDs share provider accounts and group-owned workspaces behind a local Unix domain socket. A companion remote agent (sigma-wsd) connects the desktop IDE to remote servers over standard SSH. Native builds are provided for Linux and macOS with Debian packaging. Chat inference runs across your LAN through Ollama, while vector embeddings run locally on Intel NPUs, GPUs, or CPUs via OpenVINO.',
+        controls_badge: 'TOPOLOGY: SINGLE USER OR SHARED HOST · SSH REMOTE WORKSPACE · LOCAL OR CLOUD MODELS',
+    },
+}
+
 type family_area_t = 'ai' | 'access' | 'compute' | 'research'
 
 type family_area_detail_t = {
@@ -244,22 +312,51 @@ function FamilyMap() {
 }
 
 export function HomePage() {
+    const [selected_perspective, setSelectedPerspective] = useState<perspective_key_t>('security')
+    const current_perspective = perspectives[selected_perspective]
+
     return (
         <main className="docs-home">
             <section className="docs-home-hero">
-                <div className="ui-section docs-home-hero-grid">
-                    <div className="ui-hero-copy">
-                        <span className="ui-eyebrow">VargaLABS systems</span>
-                        <h1 className="ui-hero-title">Technical systems for work that must remain under your control.</h1>
-                        <p className="ui-hero-body">
-                            Build with AI without surrendering proprietary source code, credentials, or host security. Sovereign developer systems with kernel-level boundaries, fail-closed redaction, and deterministic verification.
-                        </p>
-                        <div className="ui-row docs-home-actions">
-                            <a className="ui-button ui-button-primary" href="#products">Deploy sovereign AI</a>
-                            <a className="ui-button ui-button-secondary" href="#verify">Verify the foundation</a>
+                <div className="ui-section docs-hero-wrapper">
+                    <nav className="docs-hero-lens-bar" aria-label="Evaluation perspective">
+                        {perspective_keys.map((key) => {
+                            const p = perspectives[key]
+                            const is_active = selected_perspective === key
+                            return (
+                                <button
+                                    key={key}
+                                    type="button"
+                                    className={`docs-hero-lens-tab ${is_active ? 'docs-hero-lens-tab-active' : ''}`}
+                                    onClick={() => setSelectedPerspective(key)}
+                                    aria-pressed={is_active}
+                                >
+                                    <span className="docs-hero-lens-tag">{p.tag}</span>
+                                    <span className="docs-hero-lens-title">{p.title}</span>
+                                </button>
+                            )
+                        })}
+                    </nav>
+
+                    <div className="docs-home-hero-grid">
+                        <div className="ui-hero-copy">
+                            <span className="ui-eyebrow">{current_perspective.eyebrow}</span>
+                            <h1 className="ui-hero-title">{current_perspective.headline}</h1>
+                            <div className="docs-hero-question-block">
+                                <span className="docs-hero-question-label">{current_perspective.question_label}</span>
+                                <p className="docs-hero-question-text">{current_perspective.question}</p>
+                            </div>
+                            <p className="ui-hero-body">{current_perspective.body}</p>
+                            <div className="docs-hero-controls-badge">
+                                <code>{current_perspective.controls_badge}</code>
+                            </div>
+                            <div className="ui-row docs-home-actions">
+                                <a className="ui-button ui-button-primary" href="#products">Deploy sovereign AI</a>
+                                <a className="ui-button ui-button-secondary" href="#verify">Verify the foundation</a>
+                            </div>
                         </div>
+                        <FamilyMap />
                     </div>
-                    <FamilyMap />
                 </div>
             </section>
 
