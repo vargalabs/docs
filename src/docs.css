@@ -47,8 +47,16 @@
 .docs-map-node-interactive:hover path { stroke: var(--color-accent); }
 .docs-map-node-is-selected circle { fill: color-mix(in srgb, var(--color-accent) 22%, var(--color-surface) 78%); stroke: var(--color-accent); stroke-width: 4; }
 .docs-map-node-is-selected path { stroke: var(--color-accent); }
-.docs-map-node-available.docs-map-node-is-selected circle { fill: var(--color-accent); }
+.docs-map-node-available circle { fill: var(--color-accent); stroke: var(--color-accent-hover); }
+.docs-map-node-available path { stroke: var(--color-accent-text); }
+.docs-map-node-available.docs-map-node-is-selected circle { fill: var(--color-accent); stroke: var(--color-accent-hover); stroke-width: 4; }
 .docs-map-node-available.docs-map-node-is-selected path { stroke: var(--color-accent-text); }
+.docs-map-node-available:hover circle,
+.docs-map-node-available.docs-map-node-is-selected:hover circle { fill: var(--color-accent-hover); stroke: var(--color-accent-hover); }
+.docs-map-node-available:hover path,
+.docs-map-node-available.docs-map-node-is-selected:hover path { stroke: var(--color-accent-text); }
+.docs-map-node-interactive:hover .docs-map-label,
+.docs-map-node-is-selected .docs-map-label { fill: var(--color-text); }
 .docs-map-node-roadmap circle { stroke-dasharray: 4 4; }
 .docs-map-node-interactive:focus-visible circle { stroke-width: 6; filter: drop-shadow(0 0 0.35rem color-mix(in srgb, var(--color-accent) 66%, transparent)); }
 .docs-map-label { fill: var(--color-text-muted); font-family: var(--font-base); font-size: 17px; font-weight: var(--font-weight-bold); text-anchor: middle; }
