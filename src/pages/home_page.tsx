@@ -1,5 +1,5 @@
 import { type KeyboardEvent, useState, useSyncExternalStore } from 'react'
-import { ArrowRight, BookOpen, Compass, ShieldCheck, Wrench } from 'lucide-react'
+import { ArrowRight, BookOpen, Cpu, ShieldAlert, ShieldCheck } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 type journey_t = {
@@ -8,7 +8,7 @@ type journey_t = {
     body: string
     href: string
     cue: string
-    icon: typeof Compass
+    icon: typeof ShieldAlert
 }
 
 type product_t = {
@@ -29,35 +29,35 @@ type family_area_detail_t = {
 
 const journeys: journey_t[] = [
     {
-        eyebrow: 'Start here',
-        title: 'Choose a product',
-        body: 'Compare the documented systems that are ready to explore.',
-        href: '#products',
-        cue: 'A clear view of the family',
-        icon: Compass,
-    },
-    {
-        eyebrow: 'Start with the work',
-        title: 'Solve a problem',
-        body: 'Begin with the operational question, then find the systems that fit.',
+        eyebrow: 'The exposure',
+        title: 'Audit your risk',
+        body: 'Examine how unconfined AI tools leak proprietary context, expose credentials, and execute unchecked shell commands.',
         href: '#solutions',
-        cue: 'From concern to approach',
-        icon: Wrench,
+        cue: 'From exposure to control',
+        icon: ShieldAlert,
     },
     {
-        eyebrow: 'Check the details',
+        eyebrow: 'The solution',
+        title: 'Deploy sovereign AI',
+        body: 'Equip engineers with an autonomous daemon and workspace that confine tools to project paths and redact secrets fail-closed.',
+        href: '#products',
+        cue: 'Velocity without custody loss',
+        icon: Cpu,
+    },
+    {
+        eyebrow: 'Proof of claims',
         title: 'Verify the foundation',
-        body: 'Inspect the architecture, local boundaries and provider configuration.',
+        body: 'Do not trust marketing promises. Inspect the local Unix socket boundary, openat2 confinement tests, and append-only tape invariants.',
         href: '#verify',
         cue: 'Evidence before commitment',
         icon: ShieldCheck,
     },
     {
-        eyebrow: 'Already using SIGMA?',
-        title: 'Open documentation',
-        body: 'Go straight to installation, configuration and reference material.',
+        eyebrow: 'Production adoption',
+        title: 'License and deploy',
+        body: 'Install self-hosted binaries across team workstations or isolated air-gapped environments. Retain 100% data ownership from day one.',
         href: '/sigma/',
-        cue: 'Continue with confidence',
+        cue: 'Ready for enterprise engineering',
         icon: BookOpen,
     },
 ]
@@ -236,8 +236,8 @@ function FamilyMap() {
                 {selected.href ? <a className="docs-map-panel-action" href={selected.href}>Explore <ArrowRight aria-hidden="true" size={16} /></a> : <a className="docs-map-panel-action" href="#roadmap">View the roadmap <ArrowRight aria-hidden="true" size={16} /></a>}
             </div>
             <figcaption id="family-map-caption">
-                <span className="docs-map-caption-wide">Tap a system area to explore it. Solid nodes lead to available material. Dashed nodes describe the roadmap.</span>
-                <span className="docs-map-caption-compact">Choose an area below to read its availability and next step.</span>
+                <span className="docs-map-caption-wide">Unconstrained AI cannot safely touch production infrastructure. The VargaLABS hub establishes the sovereign boundary before connecting compute, data, or trading systems.</span>
+                <span className="docs-map-caption-compact">The VargaLABS hub establishes the sovereign boundary before connecting external systems.</span>
             </figcaption>
         </figure>
     )
@@ -252,10 +252,10 @@ export function HomePage() {
                         <span className="ui-eyebrow">VargaLABS systems</span>
                         <h1 className="ui-hero-title">Technical systems for work that must remain under your control.</h1>
                         <p className="ui-hero-body">
-                            Build with AI today and inspect the technical details before you commit. Secure work, compute and data services are on the roadmap.
+                            Build with AI without surrendering proprietary source code, credentials, or host security. Sovereign developer systems with kernel-level boundaries, fail-closed redaction, and deterministic verification.
                         </p>
                         <div className="ui-row docs-home-actions">
-                            <a className="ui-button ui-button-primary" href="#products">Choose a product</a>
+                            <a className="ui-button ui-button-primary" href="#products">Deploy sovereign AI</a>
                             <a className="ui-button ui-button-secondary" href="#verify">Verify the foundation</a>
                         </div>
                     </div>
@@ -265,9 +265,9 @@ export function HomePage() {
 
             <section className="ui-section docs-home-section" aria-labelledby="start-heading">
                 <div className="ui-section-header">
-                    <span className="ui-eyebrow">Your starting point</span>
-                    <h2 id="start-heading" className="ui-heading">Start with what you need.</h2>
-                    <p className="ui-body">Choose a path for today. Each one leads to the same product family from a different point of view.</p>
+                    <span className="ui-eyebrow">The sovereign choice</span>
+                    <h2 id="start-heading" className="ui-heading">AI velocity without losing custody.</h2>
+                    <p className="ui-body">The industry presents a false dilemma: either accept cloud data leakage to get AI speed, or stay offline and fall behind. VargaLABS eliminates the tradeoff.</p>
                 </div>
                 <div className="ui-grid docs-journey-grid" style={{ ['--grid-cols-md' as string]: 2, ['--grid-cols-lg' as string]: 4 }}>
                     {journeys.map((journey, index) => {
