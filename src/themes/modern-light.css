@@ -89,4 +89,7 @@
     --input-border-color: color-mix(in srgb, var(--ui-border) 74%, transparent);
     --input-radius: 8px;
     --action-button-height: 32px;
+
+    /* The lock-up artwork itself is themed; no surrounding frame is applied. */
+    --brand-lockup-image: url("/vargalabs-logo-modern-light.svg");
 }

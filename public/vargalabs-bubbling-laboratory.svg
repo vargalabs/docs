@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 180" role="img" aria-label="VargaLABS bubbling laboratory logo">
+ <rect width="640" height="180" rx="18" fill="#071b36"/>
+ <g transform="translate(35 21) rotate(9 76 72)">
+ <path d="M52 8h43M63 8v48L20 125q-12 26 18 26h99q30 0 17-26L98 56V8" fill="none" stroke="#f4ecd8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+ <path d="M27 119c27-13 49-7 67-3 22 5 38-8 54-11l8 20q7 16-16 16H37q-18 0-10-22" fill="#df5a00"/>
+ <circle cx="68" cy="116" r="5" fill="#ffd38b"/><circle cx="94" cy="124" r="4" fill="#ffd38b"/><circle cx="109" cy="110" r="6" fill="#ffd38b"/>
+ <circle cx="104" cy="53" r="8" fill="#f2a100"/><circle cx="122" cy="35" r="5" fill="#ffca57"/><circle cx="130" cy="16" r="7" fill="#df5a00"/><circle cx="148" cy="7" r="3" fill="#ffca57"/>
+ </g>
+ <text x="211" y="84" fill="#f4ecd8" font-family="IBM Plex Sans,Arial,sans-serif" font-size="46" font-weight="700">VargaLABS</text>
+ <text x="214" y="116" fill="#b8c8d8" font-family="IBM Plex Sans,Arial,sans-serif" font-size="18">Build · secure · operate · verify</text>
+ <circle cx="214" cy="139" r="4" fill="#f2a100"/><path d="M228 139h235" stroke="#36566c" stroke-width="2"/>
+</svg>

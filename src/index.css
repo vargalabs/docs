@@ -33,22 +33,35 @@ button {
     -webkit-tap-highlight-color: transparent;
 }
 
-/* brand logos: the light badge for light themes, the dark badge for dark */
-.ui-brand-logo {
+/* Each theme supplies a fully themed lock-up artwork; no surrounding frame is applied. */
+.docs-brand-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vargalabs-logo {
     display: block;
-    border-radius: 4px;
+    flex: none;
+    width: clamp(12.5rem, 18vw, 15rem);
+    aspect-ratio: 640 / 180;
+    background-image: var(--brand-lockup-image, url("/vargalabs-logo-modern-dark.svg"));
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
-.sigma-logo-dark {
-    display: none;
+.vargalabs-logo-footer {
+    width: 9.75rem;
+    height: auto;
 }
 
-[data-theme='sigma-dark'] .sigma-logo-light,
-[data-theme='modern-dark'] .sigma-logo-light {
-    display: none;
-}
+@media (max-width: 640px) {
+    .vargalabs-logo {
+        width: 12.5rem;
+    }
 
-[data-theme='sigma-dark'] .sigma-logo-dark,
-[data-theme='modern-dark'] .sigma-logo-dark {
-    display: block;
+    .vargalabs-logo-footer {
+        width: 8.5rem;
+    }
 }

@@ -4,11 +4,20 @@ import Header from './site_header'
 import Footer from './site_footer'
 
 export function SiteLayout() {
-    const { pathname } = useLocation()
+    const { hash, key, pathname } = useLocation()
 
     useEffect(() => {
+        if (hash) {
+            try {
+                document.getElementById(decodeURIComponent(hash.slice(1)))?.scrollIntoView()
+            }
+            catch {
+                return
+            }
+            return
+        }
         window.scrollTo(0, 0)
-    }, [pathname])
+    }, [hash, key, pathname])
 
     return (
         <div className="ui-page docs-shell">
