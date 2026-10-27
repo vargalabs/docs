@@ -18,7 +18,7 @@ type product_t = {
     status: string
 }
 
-type perspective_key_t = 'security' | 'systems' | 'crypto' | 'founder' | 'devops'
+type perspective_key_t = 'security' | 'systems' | 'office' | 'founder' | 'enterprise'
 
 type perspective_detail_t = {
     tag: string
@@ -31,58 +31,58 @@ type perspective_detail_t = {
     controls_badge: string
 }
 
-const perspective_keys: perspective_key_t[] = ['security', 'systems', 'crypto', 'founder', 'devops']
+const perspective_keys: perspective_key_t[] = ['security', 'systems', 'office', 'founder', 'enterprise']
 
 const perspectives: Record<perspective_key_t, perspective_detail_t> = {
     security: {
         tag: '01 // SECURITY',
         title: 'Blast-Radius Control',
         eyebrow: 'VARGALABS SYSTEMS',
-        headline: 'AI execution within strict blast-radius controls.',
+        headline: 'Unconstrained frontier intelligence. Zero blast radius.',
         question_label: 'THE CORE QUESTION:',
-        question: '“How do we use frontier models without risking secret leaks or rogue tool execution?”',
-        body: 'Delegate to frontier cloud models or an inference server on your private network. Every outbound payload passes through a fail-closed redaction gate that strips credentials and private keys before leaving the daemon. Workspace tools resolve all paths beneath the project root using descriptor-relative kernel confinement, refusing external symlinks outright. Subprocess execution and destructive repository actions require separate operator grants, while the approval system treats silence as refusal.',
-        controls_badge: 'CONTROLS: FAIL-CLOSED REDACTION · KERNEL PATH CONFINEMENT · SEPARATE OPERATOR GRANTS',
+        question: '“How do we unleash autonomous AI speed without leaking credentials or losing host control?”',
+        body: 'Delegate complex workflows to leading cloud models (Anthropic, OpenAI, Gemini, Kimi, Z.ai) or local private hardware via Ollama. Outbound payloads pass through a fail-closed redaction gate scrubbing secrets before egress, while tools are confined beneath project roots via kernel sandboxing. Destructive repository and subprocess actions require explicit operator grants—treating silence strictly as refusal.',
+        controls_badge: 'CONTROLS: FAIL-CLOSED REDACTION · KERNEL PATH CONFINEMENT · MULTI-PROVIDER ISOLATION',
     },
     systems: {
-        tag: '02 // SYSTEMS DEV',
-        title: 'Cross-Platform C++',
+        tag: '02 // SYSTEMS C++23',
+        title: 'Bespoke sigma-lib',
         eyebrow: 'CROSS-PLATFORM C++',
-        headline: 'Native C++23. Frontier and local models.',
+        headline: 'Bespoke C++23 architecture. Zero interpreter bloat.',
         question_label: 'THE CORE QUESTION:',
         question: '“Is this real software built for actual developer machines, or bloated web wrappers?”',
-        body: 'Engineered in clean C++23 and compiled natively for Linux and macOS, with a statically linked runtime and zero interpreter overhead. Connect directly to Anthropic, OpenAI, Google Gemini, Kimi, Z.ai, and xAI, or run chat inference on private hardware through Ollama. Every file write is staged, flushed, and committed via a single atomic rename, and no edit is accepted without fresh read evidence from the current session.',
-        controls_badge: 'OS: LINUX · MACOS | C++23 NATIVE | ATOMIC WRITES | LOCAL SOCKET',
+        body: 'Engineered from bare metal on sigma-lib, a greenfield modern C++23 foundation cross-compiling cleanly across Linux, FreeBSD, macOS, and Windows on x86_64, ARM64, and Apple Silicon. Clients connect over local Unix domain sockets (AF_UNIX) authenticated via SO_PEERCRED. Every file write is committed via a single atomic rename, with mandatory read-before-edit verification to eliminate code churn.',
+        controls_badge: 'FOUNDATION: GREENFIELD C++23 · SIGMA-LIB · LINUX · FREEBSD · MACOS · WINDOWS · S390X',
     },
-    crypto: {
-        tag: '03 // CRYPTO & MATH',
-        title: 'Deterministic Tapes',
-        eyebrow: 'VERIFIABLE STATE',
-        headline: 'Deterministic audit trails for high-consequence code.',
+    office: {
+        tag: '03 // VIRTUAL OFFICE',
+        title: 'Multi-Agent Teams',
+        eyebrow: 'AUTONOMOUS ORCHESTRATION',
+        headline: 'Orchestrate autonomous agent trees with budget custody.',
         question_label: 'THE CORE QUESTION:',
-        question: '“Can I audit and reproduce state when underlying models are non-deterministic?”',
-        body: 'No unrecorded side effects or volatile in-memory drift. The daemon enforces the durable-before-effect invariant: a tool attempt is committed to the local append-only tape and claimed before an executor may run it. Any attempt that cannot be recorded is refused. System state projections are rebuilt from the tape by replay, and duplicate replay remains strictly idempotent.',
-        controls_badge: 'INVARIANT: DURABLE BEFORE EFFECT · TAPE AS AUTHORITY · IDEMPOTENT REPLAY',
+        question: '“How do we coordinate multi-agent development without runaway loops and spiraling costs?”',
+        body: 'Deploy a virtual engineering office: named staff members hold positions (architect, coder, reviewer, researcher) and delegate subtasks across healthy providers with automatic failover, Model Context Protocol (MCP) tool integration, and recursive loop guards. Every delegated tree operates under strict token budgets, and every step is recorded to an append-only replayable tape for deterministic auditability.',
+        controls_badge: 'ORCHESTRATION: VIRTUAL OFFICE · AGENT DELEGATION · BUDGET GOVERNANCE · MCP EXTENSIBILITY',
     },
     founder: {
         tag: '04 // FOUNDER & IP',
         title: 'Data Custody',
         eyebrow: 'IP GOVERNANCE',
-        headline: 'Frontier AI velocity without trade-secret exposure.',
+        headline: 'Frontier engineering velocity. Total trade-secret custody.',
         question_label: 'THE CORE QUESTION:',
         question: '“Will using autonomous AI tools expose our proprietary algorithms to third parties?”',
-        body: 'Bring your own API keys and subscriptions, or point the daemon at an inference server inside your private network. Session tapes remain on your host in local SQLite or Redis storage. Credential-shaped content is scrubbed inside the daemon before any request leaves your machine. What external vendors do with received traffic is governed by your contract with that vendor; VargaLABS gives you the architecture to keep sensitive code strictly on private infrastructure.',
-        controls_badge: 'CUSTODY: LOCAL TAPES · DAEMON-SIDE REDACTION · BYOK OR PRIVATE INFERENCE',
+        body: 'Accelerate shipping with multi-model AI without handing proprietary trade secrets to SaaS intermediaries. Session tapes, memory vectors, and tool state remain on your infrastructure in local SQLite/Redis stores. Client credentials and API tokens are held in encrypted sigma-lib secret strings and never leave your environment. Your code is never ingested into public foundation model retraining.',
+        controls_badge: 'CUSTODY: 100% LOCAL TAPES · ENCRYPTED SECRET STRINGS · ZERO RETRAINING INGESTION',
     },
-    devops: {
-        tag: '05 // DEPLOYMENT',
-        title: 'Server, Team & OS',
+    enterprise: {
+        tag: '05 // ENTERPRISE',
+        title: 'Team & Isolated Modes',
         eyebrow: 'DEPLOYMENT TOPOLOGY',
-        headline: 'From a single workstation to a shared team host.',
+        headline: 'From developer workstations to multi-tenant team hosts.',
         question_label: 'THE CORE QUESTION:',
-        question: '“How difficult is this to operate across diverse workstations and isolated networks?”',
-        body: 'One daemon serves an individual engineer or a shared group: admitted system UIDs share provider accounts and group-owned workspaces behind a local Unix domain socket. A companion remote agent (sigma-wsd) connects the desktop IDE to remote servers over standard SSH. Native builds are provided for Linux and macOS with Debian packaging. Chat inference runs across your LAN through Ollama, while vector embeddings run locally on Intel NPUs, GPUs, or CPUs via OpenVINO.',
-        controls_badge: 'TOPOLOGY: SINGLE USER OR SHARED HOST · SSH REMOTE WORKSPACE · LOCAL OR CLOUD MODELS',
+        question: '“How does this deploy across diverse workstations and isolated team environments?”',
+        body: 'Flexible deployment built for enterprise reality: run as a personal daemon service (either in an isolated user environment or matching the developer), or deploy a multi-tenant team daemon with full user/group isolation of tapes, memory indices, and working directories plus shared enterprise AI provider accounts. Connect desktop IDEs over SSH via sigma-wsd, with full offline execution via local Ollama and OpenVINO.',
+        controls_badge: 'TOPOLOGY: TEAM DAEMON & ACCOUNT POOLING · PERSONAL ISOLATED SERVICE · AIR-GAP LOCAL',
     },
 }
 
@@ -234,17 +234,20 @@ function FamilyMap() {
                     <circle cx="320" cy="218" r="72" />
                     <path d="M294 218h52M320 192v52" />
                 </g>
-                <a
+                <g
                     className={`docs-map-node docs-map-node-interactive docs-map-node-available ${selected_area === 'ai' ? 'docs-map-node-is-selected' : ''}`}
-                    href="#products"
-                    aria-label="Build with AI, available now"
+                    role="button"
+                    tabIndex={is_compact ? -1 : 0}
                     aria-hidden={is_compact || undefined}
-                    tabIndex={is_compact ? -1 : undefined}
+                    aria-label="Build with AI, available now"
+                    aria-pressed={selected_area === 'ai'}
+                    onClick={() => selectArea('ai')}
+                    onKeyDown={(event) => selectWithKeyboard(event, 'ai')}
                 >
                     <circle cx="165" cy="112" r="52" />
                     <path d="M141 112h48M165 88v48" />
                     <text className="docs-map-label" x="165" y="42" aria-hidden="true">Build with AI</text>
-                </a>
+                </g>
                 <g
                     className={`docs-map-node docs-map-node-interactive docs-map-node-roadmap ${selected_area === 'access' ? 'docs-map-node-is-selected' : ''}`}
                     role="button"
@@ -290,7 +293,7 @@ function FamilyMap() {
                 <text className="docs-map-label docs-map-label-core" x="320" y="308" aria-hidden="true">VargaLABS</text>
             </svg>
             <nav className="docs-map-mobile-nav" aria-label="Product-family areas">
-                <a className={selected_area === 'ai' ? 'docs-map-mobile-active' : ''} href="#products">Build with AI</a>
+                <button className={selected_area === 'ai' ? 'docs-map-mobile-active' : ''} type="button" aria-pressed={selected_area === 'ai'} onClick={() => selectArea('ai')}>Build with AI</button>
                 <button className="docs-map-mobile-roadmap" type="button" aria-pressed={selected_area === 'access'} onClick={() => selectArea('access')}>Secure access and workspaces</button>
                 <button className="docs-map-mobile-roadmap" type="button" aria-pressed={selected_area === 'compute'} onClick={() => selectArea('compute')}>Compute and data</button>
                 <button className="docs-map-mobile-roadmap" type="button" aria-pressed={selected_area === 'research'} onClick={() => selectArea('research')}>Research and trade</button>
@@ -301,7 +304,15 @@ function FamilyMap() {
                     <h3>{selected.title}</h3>
                     <p>{selected.body}</p>
                 </div>
-                {selected.href ? <a className="docs-map-panel-action" href={selected.href}>Explore <ArrowRight aria-hidden="true" size={16} /></a> : <a className="docs-map-panel-action" href="#roadmap">View the roadmap <ArrowRight aria-hidden="true" size={16} /></a>}
+                {selected.href ? (
+                    <a className="docs-map-panel-action" href={selected.href}>
+                        Explore product <ArrowRight aria-hidden="true" size={16} />
+                    </a>
+                ) : (
+                    <a className="docs-map-panel-action" href="#roadmap">
+                        View the roadmap <ArrowRight aria-hidden="true" size={16} />
+                    </a>
+                )}
             </div>
             <figcaption id="family-map-caption">
                 <span className="docs-map-caption-wide">Unconstrained AI cannot safely touch production infrastructure. The VargaLABS hub establishes the sovereign boundary before connecting compute, data, or trading systems.</span>
