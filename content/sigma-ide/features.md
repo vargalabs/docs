@@ -86,8 +86,6 @@ Type `/` in the console input box to open the command completion popup. The cons
 | `/rewind` | Review recent steps and propose a rewind point. |
 | `/deep-planning [goal]` | Make a deeper multi-step plan. |
 | `/smell` | Look for code smells in the selection or file. |
-| `/usage` | Show token usage summary. |
-| `/cost` | Show estimated cost summary. |
 | `/provider [id]` | Show providers, or pin one for this session. |
 | `/providers` | List available providers. |
 | `/model [id]` | Pin a model for this session. |
@@ -120,7 +118,7 @@ Type `/` in the console input box to open the command completion popup. The cons
   - **`personalities` tab:** Edits or clears the refinement text (`personality`) on existing agent rows.
   - **`agents` tab:** Adds, edits, or removes daemon agent definitions (`name`, `model`, `mode`, `prompts`, `effort`, and `personality`).
   - **`general` tab:** Edits general daemon configuration fields validated and applied with compare-and-swap revision checks.
-- **Sigma AI Setup Wizard** (opened with **Sigma AI: Open Setup Wizard**): Four-step onboarding view (`Daemon Connection`, `Subscriptions`, `Capabilities`, and `Activation`).
+- **Sigma AI Setup Wizard** (opened with **Sigma AI: Open Setup Wizard** or inside the browser Control Panel at `/wizard`): Three-step onboarding view (**1. Subscriptions & Credentials**, **2. Virtual Office** with Arthur's staff drafter and `roles.conf` / `personalities.conf` editor, and **3. Capabilities** for memory & vector recall, voice dictation, web search, source control, and `~/ai` workspace configuration).
 
 ## Source Control, Working Tree, and Commit Graph
 

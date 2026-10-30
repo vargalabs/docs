@@ -15,7 +15,7 @@ export const site_config = {
         { label: 'Documentation', href: '/#documentation' },
         { label: 'Roadmap', href: '/#roadmap' },
     ] satisfies site_link_t[],
-    store_link: { label: 'Store', href: 'https://store.vargalabs.com', external: true } satisfies site_link_t,
+    store_link: { label: 'Store', href: 'https://store-dev.vargalabs.com/', external: true } satisfies site_link_t,
     footer_links: [
         { label: 'Privacy', href: 'https://vargalabs.com/privacy/', external: true },
         { label: 'Terms', href: 'https://vargalabs.com/terms/', external: true },

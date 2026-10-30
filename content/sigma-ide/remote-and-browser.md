@@ -6,7 +6,7 @@ summary: Run sigma-ide as a browser front end over Unix domain sockets with syst
 
 # Remote and browser deployment
 
-`sigma-ide` is designed to run as a browser-accessible editor server on a Linux host while connecting to a local or central `sigma-aid` daemon over a Unix domain socket. For multi-user licensing and how active users map to seats on a shared host, see [Team setup](/sigma/team-setup/).
+`sigma-ide` is designed to run either as a local desktop editor connected to a remote Linux host via [`sigma-wsd`](/sigma-aid/sigma-wsd/) over SSH `stdio`, or as a browser-accessible editor server on a Linux host while connecting to a local or central `sigma-aid` daemon over a Unix domain socket. For multi-user licensing and how active users map to seats on a shared host, see [Team setup](/sigma/team-setup/).
 
 ## Two-socket architecture
 

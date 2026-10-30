@@ -18,7 +18,7 @@ type product_t = {
     status: string
 }
 
-type perspective_key_t = 'security' | 'systems' | 'office' | 'founder' | 'enterprise'
+type perspective_key_t = 'reliability' | 'control' | 'cost' | 'maintainability' | 'continuity'
 
 type perspective_detail_t = {
     tag: string
@@ -27,62 +27,106 @@ type perspective_detail_t = {
     headline: string
     question_label: string
     question: string
-    body: string
+    body: string[]
     controls_badge: string
+    proof: {
+        label: string
+        href: string
+    }
 }
 
-const perspective_keys: perspective_key_t[] = ['security', 'systems', 'office', 'founder', 'enterprise']
+const perspective_keys: perspective_key_t[] = ['reliability', 'control', 'cost', 'maintainability', 'continuity']
 
 const perspectives: Record<perspective_key_t, perspective_detail_t> = {
-    security: {
-        tag: '01 // SECURITY',
-        title: 'Blast-Radius Control',
-        eyebrow: 'VARGALABS SYSTEMS',
-        headline: 'Unconstrained frontier intelligence. Zero blast radius.',
-        question_label: 'THE CORE QUESTION:',
-        question: '“How do we unleash autonomous AI speed without leaking credentials or losing host control?”',
-        body: 'Delegate complex workflows to leading cloud models (Anthropic, OpenAI, Gemini, Kimi, Z.ai) or local private hardware via Ollama. Outbound payloads pass through a fail-closed redaction gate scrubbing secrets before egress, while tools are confined beneath project roots via kernel sandboxing. Destructive repository and subprocess actions require explicit operator grants—treating silence strictly as refusal.',
-        controls_badge: 'CONTROLS: FAIL-CLOSED REDACTION · KERNEL PATH CONFINEMENT · MULTI-PROVIDER ISOLATION',
+    reliability: {
+        tag: '01 // RELIABILITY',
+        title: 'Leave it to the AI',
+        eyebrow: 'AI AGENTS IN REAL WORK',
+        headline: 'An AI system as reliable as any other',
+        question_label: 'THE RELIABILITY QUESTION',
+        question: "What to do when you can't trust the result?",
+        body: [
+            'You ask for a small fix. The agent fixes it, rewrites the function you asked it to leave alone, and announces that the tests pass without running them. You were hoping to be at lunch by now.',
+            'sigma-aid refuses file edits unless the session has already read the file and verified it has not changed on disk, then writes updates by atomic rename. Every tool call, delegation, and exit status is recorded to an append-only session tape that you can inspect in sigma-ide alongside the working-tree diff.',
+            'The tape and file gates stop blind overwrites and show exactly what ran. Your compiler, test suite, and review still decide whether the fix is right.',
+        ],
+        controls_badge: 'INSPECT THE RECORDED RUN BEFORE YOU MERGE',
+        proof: {
+            label: 'See what Agent Activity records',
+            href: '/sigma-ide/features/',
+        },
     },
-    systems: {
-        tag: '02 // SYSTEMS C++23',
-        title: 'Bespoke sigma-lib',
-        eyebrow: 'CROSS-PLATFORM C++',
-        headline: 'Bespoke C++23 architecture. Zero interpreter bloat.',
-        question_label: 'THE CORE QUESTION:',
-        question: '“Is this real software built for actual developer machines, or bloated web wrappers?”',
-        body: 'Engineered from bare metal on sigma-lib, a greenfield modern C++23 foundation cross-compiling cleanly across Linux, FreeBSD, macOS, and Windows on x86_64, ARM64, and Apple Silicon. Clients connect over local Unix domain sockets (AF_UNIX) authenticated via SO_PEERCRED. Every file write is committed via a single atomic rename, with mandatory read-before-edit verification to eliminate code churn.',
-        controls_badge: 'FOUNDATION: GREENFIELD C++23 · SIGMA-LIB · LINUX · FREEBSD · MACOS · WINDOWS · S390X',
+    control: {
+        tag: '02 // CONTROL',
+        title: 'Tools with real permissions',
+        eyebrow: 'WHEN THE AGENT CAN MAKE CHANGES',
+        headline: 'Know what the agent can touch before it starts.',
+        question_label: 'THE CONTROL QUESTION',
+        question: 'What are you willing to let it change?',
+        body: [
+            'An agent is only useful once it can edit files, run a build, or commit to a branch. Finding out where its permissions end by watching it work means finding out after the command has already run.',
+            'In sigma-aid, read, write, subprocess, and git authority are configured as separate grants, and file paths are confined relative to the workspace root. Irreversible actions such as opening a pull request or resetting a branch pause for explicit user approval, where a timeout counts as a refusal.',
+            'Subprocess tools still run as the daemon user inside the configured root unless subprocess sandboxing is enabled for the deployment.',
+        ],
+        controls_badge: 'SET GRANTS AND APPROVAL BOUNDARIES UP FRONT',
+        proof: {
+            label: 'Read the tool grants',
+            href: '/sigma-aid/tools-mcp-skills/',
+        },
     },
-    office: {
-        tag: '03 // VIRTUAL OFFICE',
-        title: 'Multi-Agent Teams',
-        eyebrow: 'AUTONOMOUS ORCHESTRATION',
-        headline: 'Orchestrate autonomous agent trees with budget custody.',
-        question_label: 'THE CORE QUESTION:',
-        question: '“How do we coordinate multi-agent development without runaway loops and spiraling costs?”',
-        body: 'Deploy a virtual engineering office: named staff members hold positions (architect, coder, reviewer, researcher) and delegate subtasks across healthy providers with automatic failover, Model Context Protocol (MCP) tool integration, and recursive loop guards. Every delegated tree operates under strict token budgets, and every step is recorded to an append-only replayable tape for deterministic auditability.',
-        controls_badge: 'ORCHESTRATION: VIRTUAL OFFICE · AGENT DELEGATION · BUDGET GOVERNANCE · MCP EXTENSIBILITY',
+    cost: {
+        tag: '03 // COST',
+        title: 'Retries that keep spending',
+        eyebrow: 'THE COST OF AN UNFINISHED TASK',
+        headline: 'A stuck loop burns tokens until something stops it.',
+        question_label: 'THE COST QUESTION',
+        question: 'How do I see what a task is spending, and which limits stop a runaway turn?',
+        body: [
+            'When an agent gets stuck on a failing compiler error, each retry sends the growing transcript back to the provider. By the time it gives up, you have paid for twenty variations of the same mistake and still have a broken build.',
+            'sigma-aid enforces per-turn output token caps, delegation-tree token budgets, nano-USD spend limits, and recursion depth caps in the daemon, while ordering static instructions ahead of dynamic context so repeated turns hit provider prompt caches. In sigma-ide, the status bar tracks live token deltas, context-window fill, and remaining subscription quotas as the turn runs.',
+            'Metered caps rely on configured per-million-token model rates, and an unpriced metered model is refused when a money budget is active rather than allowed to spend silently.',
+        ],
+        controls_badge: 'BOUND DELEGATION DEPTH AND TURN BUDGETS',
+        proof: {
+            label: 'Read the limit settings',
+            href: '/sigma-aid/configuration/',
+        },
     },
-    founder: {
-        tag: '04 // FOUNDER & IP',
-        title: 'Data Custody',
-        eyebrow: 'IP GOVERNANCE',
-        headline: 'Frontier engineering velocity. Total trade-secret custody.',
-        question_label: 'THE CORE QUESTION:',
-        question: '“Will using autonomous AI tools expose our proprietary algorithms to third parties?”',
-        body: 'Accelerate shipping with multi-model AI without handing proprietary trade secrets to SaaS intermediaries. Session tapes, memory vectors, and tool state remain on your infrastructure in local SQLite/Redis stores. Client credentials and API tokens are held in encrypted sigma-lib secret strings and never leave your environment. Your code is never ingested into public foundation model retraining.',
-        controls_badge: 'CUSTODY: 100% LOCAL TAPES · ENCRYPTED SECRET STRINGS · ZERO RETRAINING INGESTION',
+    maintainability: {
+        tag: '04 // MAINTAINABILITY',
+        title: 'After the code is generated',
+        eyebrow: 'THE WORK AFTER THE PROTOTYPE',
+        headline: 'The code arrived in minutes. Your team owns it for years.',
+        question_label: 'THE MAINTAINABILITY QUESTION',
+        question: 'Can we review and change this code safely after the chat is over?',
+        body: [
+            'Generating five hundred lines takes less than a minute. Explaining during an incident why a dependency changed or why an edge case disappeared takes considerably longer.',
+            'sigma-ide keeps Git inspection next to the conversation: a Working Tree view for staging and amending, a multi-branch Commit Graph with file diffs, and /diff and /review commands that check the current worktree before anything is committed.',
+            'Keeping the diff beside the prompt makes the review faster, but your team still owns every line that lands on the branch.',
+        ],
+        controls_badge: 'REVIEW DIFFS AND COMMIT HISTORY IN WORKSPACE',
+        proof: {
+            label: 'Read about the source control views',
+            href: '/sigma-ide/features/',
+        },
     },
-    enterprise: {
-        tag: '05 // ENTERPRISE',
-        title: 'Team & Isolated Modes',
-        eyebrow: 'DEPLOYMENT TOPOLOGY',
-        headline: 'From developer workstations to multi-tenant team hosts.',
-        question_label: 'THE CORE QUESTION:',
-        question: '“How does this deploy across diverse workstations and isolated team environments?”',
-        body: 'Flexible deployment built for enterprise reality: run as a personal daemon service (either in an isolated user environment or matching the developer), or deploy a multi-tenant team daemon with full user/group isolation of tapes, memory indices, and working directories plus shared enterprise AI provider accounts. Connect desktop IDEs over SSH via sigma-wsd, with full offline execution via local Ollama and OpenVINO.',
-        controls_badge: 'TOPOLOGY: TEAM DAEMON & ACCOUNT POOLING · PERSONAL ISOLATED SERVICE · AIR-GAP LOCAL',
+    continuity: {
+        tag: '05 // CONTINUITY',
+        title: 'Picking up the work tomorrow',
+        eyebrow: 'WHEN THE WORK CONTINUES TOMORROW',
+        headline: 'How much of today’s context survives until tomorrow?',
+        question_label: 'THE CONTINUITY QUESTION',
+        question: 'Can I resume tomorrow, or hand work to a colleague, without starting over?',
+        body: [
+            'Closing an editor tab usually turns an afternoon of debugging into a cold start the next morning. The commit shows what changed, while the dead ends and the reason for the fix stay buried in a lost chat window.',
+            'sigma-aid persists the session tape in SQLite or Redis and extracts verified long-term memories across sessions. Reopening a session in sigma-ide replays the transcript and tool activity from the daemon store rather than keeping state in the browser tab.',
+            'Session replay and long-term memory recover what the agent tried and learned, while architectural decisions still belong in your repository.',
+        ],
+        controls_badge: 'REPLAY SESSIONS AND RETAIN VERIFIED MEMORY',
+        proof: {
+            label: 'Read about sessions',
+            href: '/sigma-ide/features/',
+        },
     },
 }
 
@@ -98,34 +142,34 @@ type family_area_detail_t = {
 const journeys: journey_t[] = [
     {
         eyebrow: 'The exposure',
-        title: 'Audit your risk',
-        body: 'Examine how unconfined AI tools leak proprietary context, expose credentials, and execute unchecked shell commands.',
+        title: 'Review the architecture',
+        body: 'Examine the daemon architecture and how the editor connects before deciding what work to delegate.',
         href: '#solutions',
         cue: 'From exposure to control',
         icon: ShieldAlert,
     },
     {
         eyebrow: 'The solution',
-        title: 'Deploy sovereign AI',
-        body: 'Equip engineers with an autonomous daemon and workspace that confine tools to project paths and redact secrets fail-closed.',
+        title: 'Explore the workspace',
+        body: 'Read about the sigma-aid daemon and its connected sigma-ide development environment.',
         href: '#products',
-        cue: 'Velocity without custody loss',
+        cue: 'Meet the documented products',
         icon: Cpu,
     },
     {
         eyebrow: 'Proof of claims',
         title: 'Verify the foundation',
-        body: 'Do not trust marketing promises. Inspect the local Unix socket boundary, openat2 confinement tests, and append-only tape invariants.',
+        body: 'Review the local client connection and provider configuration. Check the details before granting access.',
         href: '#verify',
         cue: 'Evidence before commitment',
         icon: ShieldCheck,
     },
     {
         eyebrow: 'Production adoption',
-        title: 'License and deploy',
-        body: 'Install self-hosted binaries across team workstations or isolated air-gapped environments. Retain 100% data ownership from day one.',
+        title: 'Read the setup guides',
+        body: 'Review installation, account linking and licensing requirements before setting up your workspace.',
         href: '/sigma/',
-        cue: 'Ready for enterprise engineering',
+        cue: 'Understand the setup requirements',
         icon: BookOpen,
     },
 ]
@@ -315,15 +359,15 @@ function FamilyMap() {
                 )}
             </div>
             <figcaption id="family-map-caption">
-                <span className="docs-map-caption-wide">Unconstrained AI cannot safely touch production infrastructure. The VargaLABS hub establishes the sovereign boundary before connecting compute, data, or trading systems.</span>
-                <span className="docs-map-caption-compact">The VargaLABS hub establishes the sovereign boundary before connecting external systems.</span>
+                <span className="docs-map-caption-wide">The VargaLABS product family: explore the AI workspace documentation and see which areas are on the roadmap.</span>
+                <span className="docs-map-caption-compact">Explore the AI workspace documentation and the wider product roadmap.</span>
             </figcaption>
         </figure>
     )
 }
 
 export function HomePage() {
-    const [selected_perspective, setSelectedPerspective] = useState<perspective_key_t>('security')
+    const [selected_perspective, setSelectedPerspective] = useState<perspective_key_t>('reliability')
     const current_perspective = perspectives[selected_perspective]
 
     return (
@@ -357,13 +401,22 @@ export function HomePage() {
                                 <span className="docs-hero-question-label">{current_perspective.question_label}</span>
                                 <p className="docs-hero-question-text">{current_perspective.question}</p>
                             </div>
-                            <p className="ui-hero-body">{current_perspective.body}</p>
+                            <div className="ui-hero-body">
+                                {current_perspective.body.map((paragraph) => (
+                                    <p key={paragraph}>{paragraph}</p>
+                                ))}
+                                <p>
+                                    <Link className="docs-card-action" to={current_perspective.proof.href}>
+                                        {current_perspective.proof.label} <ArrowRight aria-hidden="true" size={16} />
+                                    </Link>
+                                </p>
+                            </div>
                             <div className="docs-hero-controls-badge">
                                 <code>{current_perspective.controls_badge}</code>
                             </div>
                             <div className="ui-row docs-home-actions">
-                                <a className="ui-button ui-button-primary" href="#products">Deploy sovereign AI</a>
-                                <a className="ui-button ui-button-secondary" href="#verify">Verify the foundation</a>
+                                <a className="ui-button ui-button-primary" href="#products">Explore the AI workspace</a>
+                                <a className="ui-button ui-button-secondary" href="#verify">Read the technical details</a>
                             </div>
                         </div>
                         <FamilyMap />
@@ -373,9 +426,9 @@ export function HomePage() {
 
             <section className="ui-section docs-home-section" aria-labelledby="start-heading">
                 <div className="ui-section-header">
-                    <span className="ui-eyebrow">The sovereign choice</span>
-                    <h2 id="start-heading" className="ui-heading">AI velocity without losing custody.</h2>
-                    <p className="ui-body">The industry presents a false dilemma: either accept cloud data leakage to get AI speed, or stay offline and fall behind. VargaLABS eliminates the tradeoff.</p>
+                    <span className="ui-eyebrow">Evaluate VargaLABS</span>
+                    <h2 id="start-heading" className="ui-heading">Bring these questions to the workspace.</h2>
+                    <p className="ui-body">sigma-aid is a daemon that runs on your machine. It routes requests to the AI providers you configure, runs tools for the model and keeps sessions and memory in the storage you configure. sigma-ide is a Theia-based editor that connects to the daemon over a Unix domain socket. Read how they fit together, then check the documented limits against the work you want to delegate.</p>
                 </div>
                 <div className="ui-grid docs-journey-grid" style={{ ['--grid-cols-md' as string]: 2, ['--grid-cols-lg' as string]: 4 }}>
                     {journeys.map((journey, index) => {
@@ -485,7 +538,7 @@ export function HomePage() {
                     <p className="ui-final-cta-body">Installation, licensing, provider configuration and editor deployment are available in the current guides.</p>
                     <div className="ui-row docs-home-actions">
                         <Link className="ui-button docs-final-cta-primary" to="/sigma/">Open SIGMA guides</Link>
-                        <a className="ui-button ui-button-secondary" href="https://store.vargalabs.com">Visit the store</a>
+                        <a className="ui-button ui-button-secondary" href="https://store-dev.vargalabs.com/">Visit the store</a>
                     </div>
                 </div>
             </section>
