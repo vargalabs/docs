@@ -7,23 +7,10 @@ export default function Footer() {
         <footer className="ui-footer">
             <div className="ui-container ui-row" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
                 <div className="ui-row" style={{ alignItems: 'center' }}>
-                    <img
-                        className="ui-brand-logo sigma-logo-light"
-                        src="/vargalabs.svg"
-                        alt="VargaLABS logo"
-                        width={22}
-                        height={22}
-                    />
-                    <img
-                        className="ui-brand-logo sigma-logo-dark"
-                        src="/vargalabs.svg"
-                        alt=""
-                        width={22}
-                        height={22}
-                    />
-                    <div>© {year} VargaLABS</div>
+                    <span className="vargalabs-logo vargalabs-logo-footer" role="img" aria-label="VargaLABS" />
+                    <div>© {year}</div>
                 </div>
-                <nav className="ui-nav">
+                <nav className="ui-nav" aria-label="Footer navigation">
                     {site_config.footer_links.map((link) => (
                         <a key={link.href} href={link.href} className="ui-link">{link.label}</a>
                     ))}

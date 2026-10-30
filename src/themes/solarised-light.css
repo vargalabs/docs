@@ -1,0 +1,95 @@
+[data-theme='solarised-light'] {
+    --ui-canvas: #fdf6e3;
+    --ui-panel: #fffaf0;
+    --ui-panel-2: #eee8d5;
+    --ui-header: #fdf6e3;
+    --ui-input: #fffdf6;
+
+    --ui-text: #073642;
+    --ui-muted: #657b83;
+    --ui-accent: #b58900;
+    --ui-accent-2: #cb4b16;
+    --ui-accent-text: #fffdf6;
+
+    --ui-border: #d8cfb7;
+    --ui-border-strong: #bdb18f;
+    --ui-hover: #f4eedc;
+    --ui-selected: color-mix(in srgb, var(--ui-accent) 14%, transparent);
+    --ui-grid: color-mix(in srgb, var(--ui-border) 72%, transparent);
+
+    --market-buy: #859900;
+    --market-sell: #dc322f;
+    --market-up: #859900;
+    --market-down: #dc322f;
+
+    --ui-font-family-base: 'IBM Plex Sans', 'Segoe UI', sans-serif;
+    --ui-font-family-mono: 'IBM Plex Mono', 'Consolas', monospace;
+    --ui-font-size-xs: 11px;
+    --ui-font-size-sm: 12px;
+    --ui-font-size-md: 13px;
+    --ui-line-height: 1.35;
+    --ui-font-weight-normal: 400;
+    --ui-font-weight-bold: 600;
+    --ui-radius: 6px;
+
+    --shell-topbar-height: 34px;
+    --shell-statusbar-height: 24px;
+    --shell-edge-padding: 10px;
+    --shell-gap: 10px;
+    --shell-cluster-gap: 2px;
+    --shell-bar-border: var(--ui-border);
+    --brand-letter-spacing: 0.1em;
+
+    --chrome-control-height: 24px;
+    --chrome-radius: 6px;
+    --chrome-icon-size: 22px;
+    --chrome-chevron-size: 13px;
+
+    --tab-gap: 2px;
+    --tab-padding-x: 10px;
+    --tab-active-height: 2px;
+    --tab-active-inset: 6px;
+
+    --theme-switch-gap: 2px;
+    --theme-switch-padding: 2px;
+    --theme-switch-border: var(--ui-border);
+
+    --command-padding-x: 12px;
+    --command-background: var(--ui-panel);
+    --command-border: var(--ui-border);
+
+    --status-group-gap: 2px;
+    --status-item-height: 22px;
+    --status-item-gap: 5px;
+    --status-item-padding-x: 6px;
+    --status-icon-size: 14px;
+
+    --layout-gap: 1px;
+    --panel-radius: 8px;
+    --panel-border-color: var(--ui-border);
+    --panel-header-background: var(--ui-panel-2);
+    --panel-header-border-color: var(--ui-border);
+    --panel-header-text: var(--ui-muted);
+    --panel-header-height: 28px;
+    --panel-header-padding-x: 12px;
+    --panel-body-padding: 12px;
+
+    --table-grid-color: var(--ui-grid);
+    --table-cell-padding-y: 6px;
+    --table-cell-padding-x: 10px;
+
+    --chart-row-height: 34px;
+    --chart-column-width: 52px;
+    --chart-stack-gap: 6px;
+    --chart-price-font-size: 28px;
+
+    --stack-gap: 10px;
+    --input-height: 30px;
+    --input-padding-x: 10px;
+    --input-border-color: var(--ui-border);
+    --input-radius: 6px;
+    --action-button-height: 32px;
+
+    /* The lock-up artwork itself is themed; no surrounding frame is applied. */
+    --brand-lockup-image: url("/vargalabs-logo-solarised-light.svg");
+}

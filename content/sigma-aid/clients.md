@@ -51,6 +51,8 @@ chat(c, [Dict("role" => "user", "content" => "hi")]; provider = "zai")
 
 In an interactive session, `using .SigmaAID` also installs an `ai>` console: press `}` at an empty `julia>` prompt. The file `smoke.jl` runs a five-stage check against a live daemon.
 
-## sigma-ide
+## sigma-ide and third-party editors (sigma-acp)
 
 The sigma-ide editor connects to the same socket. It is the usual way to add connections, store credentials and chat with the daemon. See the [sigma-ide section](/sigma-ide/).
+
+For third-party editors such as Neovim, Emacs, and Zed, [sigma-acp](/sigma-aid/sigma-acp/) bridges standard input/output Agent Client Protocol (ACP v1) JSON-RPC 2.0 sessions to the local `sigma-aid` socket.

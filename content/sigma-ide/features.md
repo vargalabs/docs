@@ -23,12 +23,11 @@ Assistant responses render live as they stream. The console supports:
 - **Syntax-highlighted code blocks:** Rendered through `highlight.js` and synchronized with the active light or dark workbench theme.
 - **Mathematical notation:** Inline (`$...$`) and display (`$$...$$`) equations rendered with `KaTeX`.
 - **Inline diagrams and charts:** Fenced `mermaid`, `dot` / `graphviz` (`@hpcc-js/wasm`), and `vega-lite` (`vega-embed`) blocks render inline once the closing fence arrives.
+- **Console status header:** Displays active provider/model routing, reasoning effort setting, input/output tokens, live context-window meter, weekly subscription quota, and elapsed turn wall clock.
 
-![Sigma Console rendering a Markdown table of HDF5 concepts and a KaTeX display equation](/img/sigma-ide/02.png)
+![Sigma Console showing real-time token counters, context window meters, and live mathematical derivations](/img/sigma-ide/console-math-derivation.png)
 
-![Sigma Console in the Solarized Dark theme showing an Architecture Diagram prompt and expanded Thinking steps](/img/sigma-ide/04.png)
-
-![Sigma Console in the Solarized Dark theme rendering inline Vega-Lite bar charts and architecture notes](/img/sigma-ide/05.png)
+![Sigma Console executing a multi-session workflow with tensor and metric derivations in general relativity](/img/sigma-ide/console-schwarzschild-metric.png)
 
 ### Input, mentions, and attachments
 
@@ -45,6 +44,8 @@ While agents invoke tools or delegate subtasks, the console records each call in
 - Displays a hierarchical tree of root tool calls and sub-agent delegations per turn, along with execution status (`pending`, `queued`, `running`, `done`, `error`) and elapsed time.
 - Retains tool activity across turns (up to an 8 MB rolling history budget) separated by turn headings and housekeeper summaries.
 - Provides a header slider to adjust background opacity (`sigmaAid.console.activityPanelOpacity`) and a draggable edge to resize the panel width (`sigmaAid.console.activityPanelWidth`).
+
+![Agent Activity overlay showing hierarchical tool invocations, files inspected, search queries, and memory updates with elapsed execution times](/img/sigma-ide/agent-activity-tool-calls.png)
 
 ### Voice dictation
 
@@ -86,8 +87,6 @@ Type `/` in the console input box to open the command completion popup. The cons
 | `/rewind` | Review recent steps and propose a rewind point. |
 | `/deep-planning [goal]` | Make a deeper multi-step plan. |
 | `/smell` | Look for code smells in the selection or file. |
-| `/usage` | Show token usage summary. |
-| `/cost` | Show estimated cost summary. |
 | `/provider [id]` | Show providers, or pin one for this session. |
 | `/providers` | List available providers. |
 | `/model [id]` | Pin a model for this session. |
@@ -120,7 +119,10 @@ Type `/` in the console input box to open the command completion popup. The cons
   - **`personalities` tab:** Edits or clears the refinement text (`personality`) on existing agent rows.
   - **`agents` tab:** Adds, edits, or removes daemon agent definitions (`name`, `model`, `mode`, `prompts`, `effort`, and `personality`).
   - **`general` tab:** Edits general daemon configuration fields validated and applied with compare-and-swap revision checks.
-- **Sigma AI Setup Wizard** (opened with **Sigma AI: Open Setup Wizard**): Four-step onboarding view (`Daemon Connection`, `Subscriptions`, `Capabilities`, and `Activation`).
+
+![AI Configuration panel showing daemon socket connection status, system connections (speech, memory, web search), and provider pricing/token limits](/img/sigma-ide/ai-configuration.png)
+
+- **Sigma AI Setup Wizard** (opened with **Sigma AI: Open Setup Wizard** or inside the browser Control Panel at `/wizard`): Three-step onboarding view (**1. Subscriptions & Credentials**, **2. Virtual Office** with Arthur's staff drafter and `roles.conf` / `personalities.conf` editor, and **3. Capabilities** for memory & vector recall, voice dictation, web search, source control, and `~/ai` workspace configuration).
 
 ## Source Control, Working Tree, and Commit Graph
 
@@ -128,7 +130,12 @@ Type `/` in the console input box to open the command completion popup. The cons
 
 - **Working Tree** (in the left Source Control sidebar): Displays the active branch, upstream ahead/behind counts, a flat list or directory tree toggle (**View as List** / **View as Tree**), a commit message box with **Commit** and **Amend** buttons, and collapsible sections for **Conflicted**, **Staged Changes**, **Changes**, and **Stashes**.
 - **Commit Graph** (compact **Graph** in the left Source Control sidebar, or full **Commit Graph** in the main editor area via **Open Commit Graph**): Renders a multi-branch SVG topology graph with author monogram badges, lane focus dimming, branch/tag ref filtering, and a resizable commit details and file diff pane.
+- **Trace and Filter Menus**: Offers granular display options including full ancestry tracing, merge commit filtering, upstream remote tracking, and lane dimming.
 - **Worktrees**: Displays the active repository's main and linked Git worktrees with actions to create, move, remove, and prune worktrees.
+
+![Commit Graph in Sigma IDE showing multi-lane branch topology, commit hashes, authors, and commit messages across parallel lanes](/img/sigma-ide/commit-graph-main.png)
+
+![Commit Graph ancestry tracing and lane filtering menu with options for full ancestry, merge commits, and ref highlighting](/img/sigma-ide/commit-graph-trace-menu.png)
 
 ## Commands
 

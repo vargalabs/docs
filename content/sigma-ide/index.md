@@ -10,7 +10,7 @@ summary: Standalone Eclipse Theia editor front end for the sigma-aid daemon.
 
 `sigma-ide` does not call language model providers directly from the editor. Instead, its Node.js backend connects to a running `sigma-aid` daemon over a Unix domain socket (UDS). The daemon manages provider credentials, model routing, agent delegation, persistent sessions, and workspace tool authority.
 
-![Sigma Console in a light theme showing an expanded Thinking block and a formatted Markdown response](/img/sigma-ide/01.png)
+![Sigma Console in a dark theme executing a multi-turn session with real-time status bar meters and live mathematical derivations](/img/sigma-ide/console-schwarzschild-metric.png)
 
 ## Architecture
 
@@ -47,7 +47,7 @@ flowchart LR
 
 ## Documentation in this section
 
-- [Install and run](/sigma-ide/install-and-run/): system requirements, startup commands, and daemon socket configuration.
-- [Features](/sigma-ide/features/): console, sessions, fleet, AI configuration, source control widgets, commands, status bar items, and IDE tools.
-- [Settings](/sigma-ide/settings/): reference for all `sigmaAid.*` preferences and default workbench settings.
-- [Remote and browser deployment](/sigma-ide/remote-and-browser/): running `sigma-ide` as a browser front end behind a Unix domain socket and reverse proxy.
+| [Install and run](/sigma-ide/install-and-run/) | Debian package installation, daemon socket discovery, and launching the workbench. |
+| [Features](/sigma-ide/features/) | Console, sessions, fleet, AI configuration, source control widgets, commands, status bar items, and IDE tools. |
+| [Settings](/sigma-ide/settings/) | Reference for all `sigmaAid.*` preferences and default workbench settings. |
+| [Remote and browser deployment](/sigma-ide/remote-and-browser/) | Running `sigma-ide` as a browser front end behind a Unix domain socket and reverse proxy. |

@@ -89,4 +89,7 @@
     --input-border-color: var(--ui-border-strong);
     --input-radius: 0px;
     --action-button-height: 28px;
+
+    /* The lock-up artwork itself is themed; no surrounding frame is applied. */
+    --brand-lockup-image: url("/vargalabs-logo-sigma-light.svg");
 }

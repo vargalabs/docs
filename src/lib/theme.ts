@@ -1,4 +1,4 @@
-export type theme_family_t = 'modern' | 'sigma'
+export type theme_family_t = 'modern' | 'sigma' | 'solarised'
 export type theme_mode_t = 'light' | 'dark'
 export type theme_t = `${theme_family_t}-${theme_mode_t}`
 

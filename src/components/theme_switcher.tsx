@@ -5,6 +5,7 @@ import { make_theme, set_theme, type theme_family_t, type theme_mode_t } from '.
 const theme_style_options = [
     { value: 'modern', label: 'Modern' },
     { value: 'sigma', label: 'Sigma' },
+    { value: 'solarised', label: 'Solarised' },
 ] as const
 
 const appearance_mode_options = ['light', 'dark'] as const
