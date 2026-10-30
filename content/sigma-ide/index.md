@@ -10,7 +10,7 @@ summary: Standalone Eclipse Theia editor front end for the sigma-aid daemon.
 
 `sigma-ide` does not call language model providers directly from the editor. Instead, its Node.js backend connects to a running `sigma-aid` daemon over a Unix domain socket (UDS). The daemon manages provider credentials, model routing, agent delegation, persistent sessions, and workspace tool authority.
 
-![Sigma Console in a light theme showing an expanded Thinking block and a formatted Markdown response](/img/sigma-ide/01.png)
+![Sigma Console in a dark theme executing a multi-turn session with real-time status bar meters and live mathematical derivations](/img/sigma-ide/console-schwarzschild-metric.png)
 
 ## Architecture
 
